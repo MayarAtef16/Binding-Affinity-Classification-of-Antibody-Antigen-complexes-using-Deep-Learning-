@@ -21,7 +21,7 @@
     width: $sidebar-width-lg;
     height: $navbar-height;
     @media (max-width: 991px) {
-      width: 55px;
+      width: 505px;
     }
     .sidebar-brand {
       color: lighten(color(gray-dark), 20%);
@@ -38,18 +38,18 @@
       }
 
       img {
-        width: calc(#{$sidebar-width-lg} - 120px );
+        width: calc(#{$sidebar-width-lg}  );
         max-width: 100%;
-        height: 28px;
+        height: 2500px;
         margin: auto;
         vertical-align: middle;
       }
       &.brand-logo-mini {
         display: none;
         img {
-          width: calc(#{$sidebar-width-icon} - 50px );
+          width: calc(#{$sidebar-width-icon});
           max-width: 100%;
-          height: 28px;
+          height: 100px;
           margin: auto;
         }
       }

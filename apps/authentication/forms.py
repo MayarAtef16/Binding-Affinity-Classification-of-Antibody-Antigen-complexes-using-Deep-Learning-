@@ -29,3 +29,57 @@ class CreateAccountForm(FlaskForm):
     password = PasswordField('Password',
                              id='pwd_create',
                              validators=[DataRequired()])
+
+class ContactUsForm(FlaskForm):
+    name = StringField('name',
+                         id='username_create',
+                         validators=[DataRequired()])
+    
+    email = StringField('email',
+                      id='email_create',
+                      validators=[DataRequired(), Email()])
+    
+    password = PasswordField('password',
+                             id='pwd_create',
+                             validators=[DataRequired()])
+    
+    gender = StringField('gender',
+                         id='gender_create',
+                         validators=[DataRequired()])
+    
+    city = StringField('city',
+                         id='city_create',
+                         validators=[DataRequired()])
+    
+    text_area = StringField('text_area',
+                         id='text_area_create',
+                         validators=[DataRequired()])
+    
+
+class FeedbackForm(FlaskForm):
+    name = StringField('name',
+                         id='username_create',
+                         validators=[DataRequired()])
+    
+    email = StringField('email',
+                      id='email_create',
+                      validators=[DataRequired(), Email()])
+    
+    password = PasswordField('password',
+                             id='pwd_create',
+                             validators=[DataRequired()])
+    
+    gender = StringField('gender',
+                         id='gender_create',
+                         validators=[DataRequired()])
+    
+    city = StringField('city',
+                         id='city_create',
+                         validators=[DataRequired()])
+    
+    text_area = StringField('text_area',
+                         id='text_area_create',
+                         validators=[DataRequired()])
+    satisfied = StringField('satisfied',
+                         id='satisfied_create',
+                         validators=[DataRequired()])

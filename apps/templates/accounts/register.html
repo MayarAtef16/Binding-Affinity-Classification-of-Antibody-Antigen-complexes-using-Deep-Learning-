@@ -12,18 +12,16 @@
 
   <div class="container-fluid page-body-wrapper full-page-wrapper">
     <div class="row w-100 m-0">
-      <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+      <div class="content-wrapper full-page-wrapper d-flex align-items-center auth" style="background-image: url('/static/assets/images/blue-fluorescent-protein-molecule-laguna-designscience-photo-library.jpg'); background-size: cover;  background-repeat: no-repeat;">
         <div class="card col-lg-4 mx-auto">
           <div class="card-body px-5 py-5">
             <h3 class="card-title text-left mb-3">
-              <a href="https://appseed.us/product/corona-dark/flask/">Flask Corona Dark</a> - Sign UP
+              <a>Sign UP - Binding Affinity Classification
             </h3>
 
             <span class="mb-0 text-muted">
               {% if msg %}
                   {{ msg | safe }}
-              {% else %}
-                  Add your credentials
               {% endif %} 
             </span>
             
@@ -75,10 +73,7 @@
               </form>
             {% endif %}
 
-            <p class="sign-up">
-              &copy; <a target="_blank" rel="noreferrer noopener" href="https://bit.ly/2UTgih5">Bootstrapdash</a> 
-              - coded by <a target="_blank" rel="noreferrer noopener" href="https://appseed.us">AppSeed</a>.
-            </p>
+         
 
           </div>
         </div>

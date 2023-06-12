@@ -1,0 +1,166 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Forms Editor {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/static/assets/plugins/summernote/summernote-bs4.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}  
+<h1 style="text-align: center; margin-top: 1vh; font-weight: bold; color: rgb(143, 97, 56);">FEEDBACK FORM</h1>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   <!-- general form elements -->
+   <div class="card card-primary">
+    <div class="card-header">
+      <h2 style="text-align: center;">Please help us to serve you better by taking a couple of minutes</h2>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form action="/Feedback_form" method="post">
+      <span class="mb-0 text-muted">
+        {% if msg %}
+            {{ msg | safe }}
+        {% endif %} 
+      </span>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleInputName1">Name</label>
+          <input type="text" name="name" class="form-control" id="exampleInputName1" placeholder="Enter Email">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Name">
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleSelectGender">Gender</label>
+            <select class="form-control" name="gender" id="exampleSelectGender">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+        <div class="form-group">
+            <label for="exampleInputCity1">City</label>
+            <input
+              type="text"
+              name="city"
+              class="form-control"
+              id="exampleInputCity1"
+              placeholder="Location"
+            />
+          </div>
+        <div class="form-group">
+            <label>How satisfied were you with our service</label>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="optionsRadios"
+                  id="optionsRadios1"
+                  value="option1"
+                />
+                Excellent
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="optionsRadios"
+                  id="optionsRadios2"
+                  value="option2"
+                  
+                />
+                Good
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="optionsRadios"
+                  id="optionsRadios3"
+                  value="option3"
+                  
+                />
+                Neutral
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  name="optionsRadios"
+                  id="optionsRadios3"
+                  value="option3"
+                  
+                />
+                Poor
+              </label>
+            </div>
+          </div>
+
+        <div class="mb-3" >
+          <p style="font-weight: bold;">If you have specific feedback, please write to us...</p>
+          <textarea class="textarea" name="text_area"  placeholder="Place some text here"
+                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+        </div>
+       
+      </div>
+      <!-- /.card-body -->
+
+      <div class="card-footer" >
+        <button type="submit" name="submit" style="margin-left: 45% ; background-color: rgb(143, 97, 56) ;" class="btn btn-primary" >Submit Feedback</button>
+      </div>
+    </form>
+  </div>
+  <!-- /.card -->
+    <!-- Main content -->
+    
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+  <!-- Summernote -->
+  <script src="/static/assets/plugins/summernote/summernote-bs4.min.js"></script>
+  <script>
+    $(function () {
+      // Summernote
+      $('.textarea').summernote()
+    })
+  </script>
+
+{% endblock javascripts %}

@@ -46,3 +46,58 @@ def request_loader(request):
     username = request.form.get('username')
     user = Users.query.filter_by(username=username).first()
     return user if user else None
+
+
+class contact_us_info(db.Model, UserMixin):
+
+    __tablename__ = 'contact_us_info'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(64))
+    email = db.Column(db.String(64))
+    password = db.Column(db.LargeBinary)
+    gender = db.Column(db.String(64))
+    city = db.Column(db.String(64))
+    text_area = db.Column(db.String(1000))
+
+    def __init__(self, **kwargs):
+        for property, value in kwargs.items():
+            # depending on whether value is an iterable or not, we must
+            # unpack it's value (when **kwargs is request.form, some values
+            # will be a 1-element list)
+            if hasattr(value, '__iter__') and not isinstance(value, str):
+                # the ,= unpack of a singleton fails PEP8 (travis flake8 test)
+                value = value[0]
+
+            if property == 'password':
+                value = hash_pass(value)  # we need bytes here (not plain str)
+
+            setattr(self, property, value)
+
+
+class feedback_info(db.Model, UserMixin):
+
+    __tablename__ = 'feedback_info'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(64))
+    email = db.Column(db.String(64))
+    gender = db.Column(db.String(64))
+    city = db.Column(db.String(64))
+    satisfied = db.Column(db.String(64))
+    text_area = db.Column(db.String(1000))
+
+    def __init__(self, **kwargs):
+        for property, value in kwargs.items():
+            # depending on whether value is an iterable or not, we must
+            # unpack it's value (when **kwargs is request.form, some values
+            # will be a 1-element list)
+            if hasattr(value, '__iter__') and not isinstance(value, str):
+                # the ,= unpack of a singleton fails PEP8 (travis flake8 test)
+                value = value[0]
+
+            if property == 'password':
+                value = hash_pass(value)  # we need bytes here (not plain str)
+
+            setattr(self, property, value)
+

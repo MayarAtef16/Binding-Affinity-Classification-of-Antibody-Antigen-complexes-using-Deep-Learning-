@@ -8,7 +8,7 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from importlib import import_module
 
-
+UPLOAD_FOLDER = 'uploads'
 db = SQLAlchemy()
 login_manager = LoginManager()
 
@@ -38,6 +38,8 @@ def configure_database(app):
 def create_app(config):
     app = Flask(__name__)
     app.config.from_object(config)
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
     register_extensions(app)
     register_blueprints(app)
     configure_database(app)
