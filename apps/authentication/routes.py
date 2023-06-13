@@ -113,24 +113,22 @@ def contact_us():
 
         email = request.form['email']
         name = request.form['name']
-        password=request.form["password"]
         if not email == current_user.email:
-            return render_template('home/contact_us.html',
-                               msg='The email is incorrect',
-                               form=contact_form)
-        elif not name == current_user.username:
-            return render_template('home/contact_us.html',
-                               msg='The Username is incorrect',
-                               form=contact_form)
-        elif not password == current_user.password:
             image = '/static/assets/images/'+current_user.username+ '.jpg'
 
             return render_template('home/contact_us.html',
-                               msg='The password is incorrect',
+                               msg='The email is incorrect',
+                               form=contact_form,img=image)
+        elif not name == current_user.username:
+            image = '/static/assets/images/'+current_user.username+ '.jpg'
+
+            return render_template('home/contact_us.html',
+                               msg='The Username is incorrect',
                                form=contact_form,img=image)
         
+        
         # else we can create the user
-        user = contact_us_info(name=request.form['name'],email=request.form['email'],password=request.form["password"],gender=request.form['gender'],city=request.form['city'],text_area=request.form['text_area'])
+        user = contact_us_info(name=request.form['name'],email=request.form['email'],gender=request.form['gender'],city=request.form['city'],text_area=request.form['text_area'])
         db.session.add(user)
         db.session.commit()
 
@@ -176,7 +174,7 @@ def setting():
         elif 'save' in request.form:
             username = body['name']
             user = Users.query.filter_by(username=username).first()
-            user.email = body['email']
+            user.email = request.form['email']
             user.username = body['name']
             #user.password = body['password']
             db.session.commit()
@@ -206,7 +204,11 @@ def discover():
     
 @blueprint.route('/Feedback_form', methods=['GET', 'POST'])
 def feedback():
-      
+  if request.method == 'GET':
+        user = current_user
+        image = '/static/assets/images/'+current_user.username+ '.jpg'
+        return render_template('home/Feedback_form.html',current_user=user,img=image)
+  else:
     feedback_form = FeedbackForm(request.form)
     print(request.form)
     if 'submit' in request.form:
@@ -265,6 +267,10 @@ def AbAgIntPre():
                 print("Script executed successfully.")
                 print("Output:")
                 print(output.stdout)
+                image = '/static/assets/images/'+current_user.username+ '.jpg'
+
+                return render_template('home/AbAgIntPre.html', out=output.stdout,img=image)
+
             else:
                 print("Script execution failed.")
                 print("Error message:")
@@ -290,7 +296,13 @@ def AbAgIntPre():
         
 
 @blueprint.route('/visualize_pdb', methods=['GET', 'POST'])
-
+def visualize():
+    if request.method == 'GET':
+            print(request.form)
+            user = current_user
+            image = '/static/assets/images/'+current_user.username+ '.jpg'
+            return render_template('home/visualize_pdb.html',img=image)
+    
 @blueprint.route('/logout')
 def logout():
     logout_user()

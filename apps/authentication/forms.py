@@ -39,9 +39,7 @@ class ContactUsForm(FlaskForm):
                       id='email_create',
                       validators=[DataRequired(), Email()])
     
-    password = PasswordField('password',
-                             id='pwd_create',
-                             validators=[DataRequired()])
+
     
     gender = StringField('gender',
                          id='gender_create',
@@ -65,9 +63,7 @@ class FeedbackForm(FlaskForm):
                       id='email_create',
                       validators=[DataRequired(), Email()])
     
-    password = PasswordField('password',
-                             id='pwd_create',
-                             validators=[DataRequired()])
+  
     
     gender = StringField('gender',
                          id='gender_create',

@@ -165,7 +165,7 @@ def main():
 
     args = parser.parse_args()
 
-    device=torch.device("cuda")
+    device=torch.device("cpu")
     model=SiameseNetwork().to(device)
     df=pd.Series(data=[args.antibody_cdr,args.antigen_seq])
     test_loader=_get_test_data_loader(1,df)
@@ -173,7 +173,7 @@ def main():
     #model.load_state_dict(torch.load("/content/weights.pth")) 
     pred =test(model,test_loader,device)
 
-    return pred
+    print(pred) 
 
 if __name__=="__main__":
     main()
